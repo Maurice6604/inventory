@@ -15,10 +15,13 @@
         <!-- Scripts & Tailwind CSS -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-[hsl(var(--text-main))] bg-[hsl(var(--background))] flex h-screen overflow-hidden">
+    <body class="font-sans antialiased text-[hsl(var(--text-main))] bg-[hsl(var(--background))] flex h-screen overflow-hidden" x-data="{ sidebarOpen: false }">
 
         <!-- Page load progress bar -->
         <div id="page-progress"></div>
+
+        <!-- Mobile Sidebar Overlay -->
+        <div x-show="sidebarOpen" x-transition.opacity class="fixed inset-0 bg-black/50 z-20 md:hidden" @click="sidebarOpen = false" style="display: none;"></div>
 
         <!-- Sidebar Navigation -->
         @include('layouts.sidebar')
@@ -28,6 +31,9 @@
             <!-- Top Header -->
             <header class="bg-white border-b border-[hsl(var(--border))] h-16 flex items-center justify-between px-6 shrink-0 z-10">
                 <div class="flex items-center gap-3">
+                    <button @click="sidebarOpen = true" class="md:hidden text-[hsl(var(--text-muted))] hover:text-[hsl(var(--primary))] focus:outline-none -ml-2 mr-1">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
                     <h1 class="text-lg font-bold text-[hsl(var(--text-main))]">@yield('header')</h1>
                 </div>
 

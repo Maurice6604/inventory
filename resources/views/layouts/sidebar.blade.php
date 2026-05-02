@@ -1,7 +1,7 @@
-<aside class="w-64 bg-[hsl(var(--sidebar-bg))] flex flex-col h-full shrink-0 relative z-20" style="box-shadow: 4px 0 24px rgba(0,0,0,0.15);">
+<aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" class="w-64 bg-[hsl(var(--sidebar-bg))] flex flex-col h-full shrink-0 fixed inset-y-0 left-0 md:static z-30 transform md:translate-x-0 transition-transform duration-300 ease-in-out" style="box-shadow: 4px 0 24px rgba(0,0,0,0.15);">
 
     <!-- Brand -->
-    <div class="h-16 flex items-center px-6 border-b border-white/10">
+    <div class="h-16 flex items-center justify-between px-6 border-b border-white/10">
         <div class="flex items-center gap-3">
             <div class="w-9 h-9 bg-[hsl(var(--primary))] rounded-xl flex items-center justify-center shadow-lg">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
@@ -11,6 +11,9 @@
                 <p class="text-[hsl(var(--sidebar-text))] text-xs">Management System</p>
             </div>
         </div>
+        <button @click="sidebarOpen = false" class="md:hidden text-[hsl(var(--sidebar-text))] hover:text-white focus:outline-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
     </div>
 
     <!-- Navigation -->
