@@ -91,7 +91,7 @@
                                 </span>
                             </td>
                             <td>
-                                <div class="font-mono text-sm bg-gray-100 px-2 py-1 rounded inline-block">
+                                <div class="font-mono text-sm bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded inline-block">
                                     <span class="text-[hsl(var(--text-muted))]">{{ $movement->quantity_before }}</span> → 
                                     <span class="font-bold text-[hsl(var(--text-main))]">{{ $movement->quantity_after }}</span>
                                 </div>

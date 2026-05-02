@@ -9,9 +9,9 @@ window.Chart = Chart;
 
 // ─── Dark Mode ────────────────────────────────────────────────────────────────
 function applyTheme(theme) {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.classList.add('dark');
 }
-applyTheme(localStorage.getItem('theme') || 'light');
+applyTheme('dark');
 
 window.toggleDarkMode = function () {
     const next = document.documentElement.classList.contains('dark') ? 'light' : 'dark';

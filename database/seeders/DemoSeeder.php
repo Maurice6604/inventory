@@ -70,5 +70,29 @@ class DemoSeeder extends Seeder
                 );
             }
         }
+        // 5. Create some Dead Stock (Products older than 60 days with NO 'OUT' movements in last 60 days)
+        $deadProducts = Product::factory()->count(3)->create([
+            'created_by' => $admin->id,
+            'created_at' => now()->subDays(65),
+            'updated_at' => now()->subDays(65),
+        ]);
+
+        foreach ($deadProducts as $product) {
+            // Add initial stock 65 days ago
+            $movement = $stockService->addStock(
+                product: $product,
+                quantity: rand(15, 45),
+                userId: $admin->id,
+                source: 'Old Vendor Stock',
+                reference: 'PO-DEAD-' . rand(100, 999),
+                notes: 'Dead stock demo data'
+            );
+            
+            // Backdate the movement to be older than 60 days
+            \App\Models\StockMovement::where('id', $movement->id)->update([
+                'created_at' => now()->subDays(65),
+                'updated_at' => now()->subDays(65),
+            ]);
+        }
     }
 }

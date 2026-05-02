@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <!-- Dark mode toggle -->
-                    <button id="dark-mode-btn" onclick="toggleDarkMode()" class="btn-icon" title="Toggle Dark Mode"></button>
+                    <!-- Dark mode toggle (commented out to lock dark mode) -->
+                    <!-- <button id="dark-mode-btn" onclick="toggleDarkMode()" class="btn-icon" title="Toggle Dark Mode"></button> -->
 
                     <!-- Activity link -->
                     <a href="{{ route('stock.history') }}" class="btn-icon" title="Stock Activity">
