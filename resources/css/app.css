@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+    --primary:        224 76% 44%;      /* Deep Indigo Blue — slightly deeper */
+    --primary-hover:  224 76% 34%;
+    --primary-light:  224 76% 96%;
+    --secondary:      215 20% 25%;      /* Darker Slate for visibility */
+    --background:     220 25% 97%;      /* Cool Off-White */
+    --surface:        0   0%  100%;     /* Pure White */
+    --text-main:      222 47% 8%;       /* Deeper Navy — near black */
+    --text-muted:     215 20% 38%;      /* Darker muted — was 47%, now 38% */
+    --success:        158 64% 36%;      /* Deeper Forest Green */
+    --success-light:  158 64% 95%;
+    --warning:        38  92% 42%;      /* Deeper Amber */
+    --warning-light:  38  92% 95%;
+    --danger:         348 83% 42%;      /* Deeper Crimson */
+    --danger-light:   348 83% 96%;
+    --border:         220 20% 85%;      /* Slightly stronger border */
+    --sidebar-bg:     222 47% 11%;      /* Deep Navy Sidebar */
+    --sidebar-text:   215 30% 75%;      /* Muted sidebar text */
+}
+
+/* ── Dark Mode ──────────────────────────────────────────────── */
+.dark {
+    --background:    222 47% 7%;
+    --surface:       222 44% 11%;
+    --text-main:     215 30% 92%;
+    --text-muted:    215 20% 55%;
+    --border:        222 30% 20%;
+    --sidebar-bg:    222 47% 5%;
+    --sidebar-text:  215 20% 55%;
+    --primary-light: 224 76% 20%;
+    --success-light: 158 40% 15%;
+    --warning-light: 38  50% 15%;
+    --danger-light:  348 50% 15%;
+}
+
+/* ── Body & layout ── */
+.dark body                    { background-color: hsl(var(--background)); color: hsl(var(--text-main)); }
+.dark .flex-1                 { background-color: hsl(var(--background)); }
+
+/* ── Header ── */
+.dark header                  { background-color: hsl(var(--surface)) !important; border-color: hsl(var(--border)) !important; }
+
+/* ── User dropdown button ── */
+.dark header button.flex.items-center.gap-2\.5 { background-color: hsl(var(--surface)) !important; border-color: hsl(var(--border)) !important; }
+.dark header button.flex.items-center.gap-2\.5 span { color: hsl(var(--text-main)) !important; }
+.dark header button.flex.items-center.gap-2\.5 svg  { color: hsl(var(--text-muted)) !important; }
+
+/* ── Dropdown menus (user dropdown, any Alpine dropdown) ── */
+.dark [x-show] { background-color: hsl(var(--surface)) !important; border-color: hsl(var(--border)) !important; }
+.dark [x-show] p, .dark [x-show] span, .dark [x-show] a { color: hsl(var(--text-main)) !important; }
+.dark [x-show] .border-b { border-color: hsl(var(--border)) !important; }
+.dark [x-show] a:hover, .dark [x-show] button:not(.btn-danger):hover { background-color: rgba(255,255,255,0.06) !important; }
+
+/* ── Cards ── */
+.dark .premium-card           { background-color: hsl(var(--surface)) !important; border-color: hsl(var(--border)) !important; }
+.dark .stat-card              { background-color: hsl(var(--surface)) !important; border-color: hsl(var(--border)) !important; }
+
+/* ── Stat card icons ── */
+.dark .stat-card-icon.bg-blue-50   { background-color: rgba(99,102,241,0.15) !important; }
+.dark .stat-card-icon.bg-indigo-50 { background-color: rgba(99,102,241,0.12) !important; }
+.dark .stat-card-icon.bg-amber-50  { background-color: rgba(245,158,11,0.12) !important; }
+.dark .stat-card-icon.bg-red-50    { background-color: rgba(239,68,68,0.12) !important; }
+.dark .stat-card-icon.bg-gray-50   { background-color: rgba(255,255,255,0.06) !important; }
+.dark .stat-card-icon.text-indigo-500 { color: #818cf8 !important; }
+
+/* ── Tables ── */
+.dark .premium-table thead          { background-color: rgba(255,255,255,0.04) !important; }
+.dark .premium-table th             { color: hsl(var(--text-muted)) !important; }
+.dark .premium-table td             { color: hsl(var(--text-main)) !important; }
+.dark .premium-table tbody tr       { border-color: hsl(var(--border)) !important; }
+.dark .premium-table tbody tr:hover { background-color: rgba(255,255,255,0.04) !important; }
+
+/* ── Section headers ── */
+.dark .section-header         { background-color: rgba(255,255,255,0.03) !important; border-color: hsl(var(--border)) !important; }
+.dark .section-title          { color: hsl(var(--text-muted)) !important; }
+
+/* ── Card inner bg ── */
+.dark .bg-white\/50           { background-color: rgba(255,255,255,0.03) !important; }
+.dark .bg-gray-50\/50         { background-color: rgba(255,255,255,0.02) !important; }
+.dark .bg-gray-50             { background-color: rgba(255,255,255,0.05) !important; }
+.dark .bg-white               { background-color: hsl(var(--surface)) !important; }
+
+/* ── Borders ── */
+.dark .border-b, .dark .border-t, .dark .border-r, .dark .border { border-color: hsl(var(--border)) !important; }
+.dark .divide-y > * + *       { border-color: hsl(var(--border)) !important; }
+
+/* ── Badges ── */
+.dark .badge-secondary        { background-color: rgba(255,255,255,0.08) !important; border-color: rgba(255,255,255,0.12) !important; color: hsl(var(--text-muted)) !important; }
+.dark .badge-success          { background-color: hsl(var(--success-light)) !important; border-color: rgba(34,197,94,0.25) !important; }
+.dark .badge-warning          { background-color: hsl(var(--warning-light)) !important; border-color: rgba(245,158,11,0.25) !important; }
+.dark .badge-danger           { background-color: hsl(var(--danger-light))  !important; border-color: rgba(239,68,68,0.25) !important; }
+.dark .badge-primary          { background-color: hsl(var(--primary-light)) !important; border-color: rgba(99,102,241,0.25) !important; }
+
+/* ── Form inputs ── */
+.dark .premium-input          { background-color: rgba(255,255,255,0.05) !important; border-color: hsl(var(--border)) !important; color: hsl(var(--text-main)) !important; }
+.dark select.premium-input option { background-color: hsl(var(--surface)) !important; color: hsl(var(--text-main)) !important; }
+
+/* ── Buttons ── */
+.dark .btn-secondary          { background-color: rgba(255,255,255,0.08) !important; border-color: rgba(255,255,255,0.12) !important; color: hsl(var(--text-main)) !important; }
+.dark .btn-secondary:hover    { background-color: rgba(255,255,255,0.14) !important; }
+.dark .btn-icon               { color: hsl(var(--text-muted)) !important; }
+.dark .btn-icon:hover         { background-color: rgba(255,255,255,0.08) !important; color: hsl(var(--text-main)) !important; }
+
+/* ── Flash messages ── */
+.dark .bg-green-50\/80        { background-color: rgba(34,197,94,0.1) !important; border-color: rgba(34,197,94,0.2) !important; }
+.dark .bg-red-50\/80          { background-color: rgba(239,68,68,0.1) !important; border-color: rgba(239,68,68,0.2) !important; }
+
+/* ── Modal overlays ── */
+.dark .premium-card.animate-fade-in { background-color: hsl(var(--surface)) !important; }
+.dark .bg-yellow-50           { background-color: rgba(245,158,11,0.1) !important; }
+.dark .bg-red-50              { background-color: rgba(239,68,68,0.08) !important; }
+.dark .text-yellow-800        { color: #fcd34d !important; }
+.dark .text-red-700           { color: #f87171 !important; }
+
+/* ── Breadcrumb bar ── */
+.dark .px-6.py-2.border-b     { background-color: rgba(255,255,255,0.02) !important; border-color: hsl(var(--border)) !important; }
+
+/* ── Pagination ── */
+.dark .p-4.border-t.bg-gray-50\/50 { background-color: rgba(255,255,255,0.02) !important; border-color: hsl(var(--border)) !important; }
+.dark nav[role="navigation"] span,
+.dark nav[role="navigation"] a { background-color: rgba(255,255,255,0.06) !important; border-color: hsl(var(--border)) !important; color: hsl(var(--text-main)) !important; }
+.dark nav[role="navigation"] a:hover { background-color: rgba(255,255,255,0.12) !important; }
+
+/* ── Hover states on list items ── */
+.dark .hover\:bg-gray-50\/50:hover  { background-color: rgba(255,255,255,0.04) !important; }
+.dark .hover\:bg-amber-50\/40:hover { background-color: rgba(245,158,11,0.08) !important; }
+.dark .hover\:bg-blue-50\/30:hover  { background-color: rgba(99,102,241,0.06) !important; }
+
+/* ── Text colors ── */
+.dark .text-gray-400          { color: hsl(var(--text-muted)) !important; }
+.dark .text-gray-300          { color: rgba(255,255,255,0.2) !important; }
+.dark .text-indigo-600        { color: #818cf8 !important; }
+
+/* ── Timeline dots ── */
+.dark .timeline-dot           { ring-color: hsl(var(--surface)) !important; }
+.dark .timeline-item::before  { background-color: hsl(var(--border)) !important; }
+
+/* ── Row tints in dark ── */
+.dark .row-out-of-stock       { background-color: rgba(239,68,68,0.08) !important; }
+.dark .row-low-stock          { background-color: rgba(245,158,11,0.06) !important; }
+.dark .row-out-of-stock:hover { background-color: rgba(239,68,68,0.14) !important; }
+.dark .row-low-stock:hover    { background-color: rgba(245,158,11,0.12) !important; }
+
+/* ── Stock bar track ── */
+.dark .stock-bar-track        { background-color: rgba(255,255,255,0.08) !important; }
+
+/* ── Report gradient cards ── */
+.dark .bg-gradient-to-br      { background: hsl(var(--surface)) !important; }
+
+
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+    body {
+        @apply bg-[hsl(var(--background))] text-[hsl(var(--text-main))] font-sans antialiased;
+        font-weight: 500;
+    }
+    p, span, div {
+        font-weight: inherit;
+    }
+    *:focus-visible {
+        @apply outline-none ring-2 ring-[hsl(var(--primary))] ring-offset-2;
+    }
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+@layer components {
+
+    /* ---- Cards ---- */
+    .premium-card {
+        @apply bg-white border border-[hsl(var(--border))] rounded-2xl shadow-sm transition-shadow duration-300 hover:shadow-md;
+    }
+    .stat-card {
+        @apply premium-card p-6 flex items-start justify-between;
+    }
+    .stat-card-icon {
+        @apply p-3 rounded-xl flex items-center justify-center;
+    }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+        @apply inline-flex items-center gap-2 bg-[hsl(var(--primary))] text-white text-sm font-semibold
+               px-5 py-2.5 rounded-xl shadow-sm
+               hover:bg-[hsl(var(--primary-hover))] hover:-translate-y-px
+               active:translate-y-0 active:shadow-none
+               transition-all duration-200
+               focus:ring-2 focus:ring-[hsl(var(--primary))]/40 focus:outline-none;
+    }
+    .btn-secondary {
+        @apply inline-flex items-center gap-2 bg-white text-[hsl(var(--secondary))] text-sm font-semibold
+               border border-[hsl(var(--border))]
+               px-5 py-2.5 rounded-xl
+               hover:bg-gray-50 hover:text-[hsl(var(--text-main))] hover:border-gray-300
+               active:bg-gray-100
+               transition-all duration-200
+               focus:ring-2 focus:ring-gray-200 focus:outline-none;
+    }
+    .btn-danger {
+        @apply inline-flex items-center gap-2 bg-[hsl(var(--danger))] text-white text-sm font-semibold
+               px-5 py-2.5 rounded-xl shadow-sm
+               hover:bg-red-700 hover:-translate-y-px
+               active:translate-y-0
+               transition-all duration-200
+               focus:ring-2 focus:ring-[hsl(var(--danger))]/40 focus:outline-none;
+    }
+    .btn-success {
+        @apply inline-flex items-center gap-2 bg-[hsl(var(--success))] text-white text-sm font-semibold
+               px-5 py-2.5 rounded-xl shadow-sm
+               hover:brightness-110 hover:-translate-y-px
+               transition-all duration-200
+               focus:ring-2 focus:ring-[hsl(var(--success))]/40 focus:outline-none;
+    }
+    .btn-icon {
+        @apply p-2 rounded-lg text-[hsl(var(--text-muted))] hover:text-[hsl(var(--text-main))] hover:bg-gray-100 transition-colors duration-150;
+    }
+
+    /* ---- Badges ---- */
+    .badge {
+        @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold border;
+    }
+    .badge-success  { @apply bg-[hsl(var(--success-light))]  text-[hsl(var(--success))]  border-green-300; }
+    .badge-warning  { @apply bg-[hsl(var(--warning-light))]  text-yellow-800              border-yellow-300; }
+    .badge-danger   { @apply bg-[hsl(var(--danger-light))]   text-[hsl(var(--danger))]   border-red-300; }
+    .badge-secondary{ @apply bg-gray-100                     text-[hsl(var(--secondary))] border-gray-300; }
+    .badge-primary  { @apply bg-[hsl(var(--primary-light))]  text-[hsl(var(--primary))]  border-blue-300; }
+
+    /* ---- Form Inputs ---- */
+    .premium-input {
+        @apply w-full rounded-xl border border-[hsl(var(--border))] bg-white
+               px-4 py-2.5 text-sm font-semibold text-[hsl(var(--text-main))]
+               placeholder:text-[hsl(var(--text-muted))]
+               transition-all duration-200
+               focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary))]/20 focus:outline-none;
+    }
+    .premium-label {
+        @apply block text-sm font-bold text-[hsl(var(--text-main))] mb-1.5;
+    }
+
+    /* ---- Tables ---- */
+    .premium-table {
+        @apply min-w-full divide-y divide-[hsl(var(--border))];
+    }
+    .premium-table thead {
+        @apply bg-gray-50/80;
+    }
+    .premium-table th {
+        @apply px-6 py-3.5 text-left text-xs font-extrabold text-[hsl(var(--text-main))] uppercase tracking-widest;
+    }
+    .premium-table td {
+        @apply px-6 py-4 text-sm font-medium text-[hsl(var(--text-main))];
+    }
+    .premium-table tbody tr {
+        @apply hover:bg-blue-50/30 transition-colors duration-100 border-b border-[hsl(var(--border))] last:border-0;
+    }
+
+    /* ---- Sidebar (Dark theme) ---- */
+    .sidebar-link {
+        @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+               text-[hsl(var(--sidebar-text))]
+               hover:bg-white/10 hover:text-white
+               transition-all duration-150;
+    }
+    .sidebar-link.active {
+        @apply bg-[hsl(var(--primary))] text-white shadow-lg;
+    }
+    .sidebar-icon {
+        @apply w-5 h-5 shrink-0;
+    }
+
+    /* ---- Animations ---- */
+    .animate-fade-in {
+        animation: fadeIn 0.25s ease-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Activity Timeline ---- */
+    .timeline-item {
+        @apply relative flex gap-4 pb-5;
+    }
+    .timeline-item::before {
+        content: '';
+        @apply absolute left-5 top-10 bottom-0 w-px bg-[hsl(var(--border))];
+    }
+    .timeline-item:last-child::before {
+        @apply hidden;
+    }
+    .timeline-dot {
+        @apply w-10 h-10 rounded-full flex items-center justify-center shrink-0 ring-4 ring-white;
+    }
+
+    /* ---- Section header ---- */
+    .section-header {
+        @apply flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--border))] bg-gray-50/50;
+    }
+    .section-title {
+        @apply text-sm font-bold text-[hsl(var(--text-main))] uppercase tracking-wider;
+    }
+
+    /* ── Skeleton Shimmer ────────────────────────────────────── */
+    .skeleton {
+        @apply rounded-lg bg-gray-200 overflow-hidden relative;
+        background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.4s infinite;
+    }
+    @keyframes shimmer {
+        0%   { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+    .dark .skeleton { background: linear-gradient(90deg, #1e293b 25%, #293548 50%, #1e293b 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+
+    /* ── Page progress bar ───────────────────────────────────── */
+    #page-progress {
+        @apply fixed top-0 left-0 h-0.5 bg-[hsl(var(--primary))] z-[9999] transition-all duration-200 ease-out;
+        width: 0%;
+    }
+
+    /* ── Stock row tints ─────────────────────────────────────── */
+    .row-out-of-stock { @apply bg-red-50/60; }
+    .row-out-of-stock:hover { @apply bg-red-50 !important; }
+    .row-low-stock    { @apply bg-amber-50/50; }
+    .row-low-stock:hover { @apply bg-amber-50 !important; }
+    .dark .row-out-of-stock { @apply bg-red-950/30; }
+    .dark .row-low-stock    { @apply bg-amber-950/30; }
+
+    /* ── Stock progress bar ──────────────────────────────────── */
+    .stock-bar-track {
+        @apply w-full h-1.5 rounded-full bg-gray-100 mt-1.5 overflow-hidden;
+    }
+    .stock-bar-fill {
+        @apply h-full rounded-full transition-all duration-700;
+    }
+}
+
