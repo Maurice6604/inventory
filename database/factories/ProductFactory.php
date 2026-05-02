@@ -11,12 +11,20 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $cost = $this->faker->randomFloat(2, 5, 100);
+        $products = [
+            'Wireless Mouse', 'Mechanical Keyboard', 'Office Chair', 'Monitor Stand', 'Business Laptop', 
+            'Noise Cancelling Headphones', 'Coffee Maker', 'Laser Printer', 'External Hard Drive', 'Webcam', 
+            'USB Microphone', 'USB-C Hub', 'HDMI Cable', 'Standing Desk', 'Ergonomic Mouse', 
+            'Tablet Computer', 'Business Smartphone', 'Power Bank 10000mAh', 'Fast Charger', 'Bluetooth Speaker', 
+            'Gigabit Router', 'Network Switch', 'Extension Cord', 'Surge Protector', 'LED Desk Lamp',
+            'Paper Shredder', 'Whiteboard', 'Filing Cabinet', 'Projector', 'Security Camera'
+        ];
         return [
             'category_id' => Category::inRandomOrder()->first()?->id ?? Category::factory(),
-            'name' => ucfirst($this->faker->unique()->words(3, true)),
+            'name' => $this->faker->unique()->randomElement($products),
             'sku' => strtoupper($this->faker->unique()->lexify('PROD-????-') . $this->faker->numerify('####')),
             'unit' => $this->faker->randomElement(['pcs', 'box', 'kg', 'pack']),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->sentence(8),
             'cost_price' => $cost,
             'selling_price' => $cost * 1.5,
             'minimum_stock_level' => $this->faker->numberBetween(5, 50),

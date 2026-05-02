@@ -8,9 +8,10 @@ class CategoryFactory extends Factory
 {
     public function definition(): array
     {
+        $categories = ['Electronics', 'Office Supplies', 'Furniture', 'Clothing', 'Tools', 'Appliances', 'Hardware', 'Software', 'Accessories', 'Automotive', 'Kitchenware', 'Stationery', 'Networking', 'Storage', 'Peripherals'];
         return [
-            'name' => ucfirst($this->faker->unique()->words(2, true)),
-            'description' => $this->faker->sentence(),
+            'name' => $this->faker->unique()->randomElement($categories),
+            'description' => $this->faker->sentence(6),
             'is_active' => true,
         ];
     }
