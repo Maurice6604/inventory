@@ -1,0 +1,17 @@
+node_modules/
+vendor/
+.env
+.env.*
+!.env.example
+storage/logs/*.log
+public/build/
+public/hot
+database/*.sqlite
+database/*.sqlite-shm
+database/*.sqlite-wal
+.git/
+.idea/
+.vscode/
+*.log
+Thumbs.db
+.DS_Store

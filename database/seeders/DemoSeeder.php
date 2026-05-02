@@ -13,6 +13,12 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
+        // Skip if demo data already exists (safe for container restarts)
+        if (User::where('email', 'admin@demo.local')->exists()) {
+            $this->command?->info('Demo data already exists — skipping seeder.');
+            return;
+        }
+
         // 1. Create Users
         $admin = User::create([
             'name' => 'Demo Admin',
